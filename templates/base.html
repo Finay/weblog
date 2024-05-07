@@ -1,0 +1,19 @@
+<!doctype html>
+
+<!-- Head -->
+<head>
+  {% include 'head.html' %}
+  <title>{% block title %}{% endblock %} - kian's weblog</title>
+</head>
+
+<section class="content">
+  <!-- Navigation -->
+  {% include 'navbar.html' %}
+
+  <section class="post">
+    {% block content %}{% endblock %}
+  </section>
+
+  <!-- Footer -->
+  {% include 'footer.html' %}
+</section>
