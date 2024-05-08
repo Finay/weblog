@@ -1,0 +1,27 @@
+title: Movie List
+tag: personal
+date: 2024-05-08
+---
+{% extends 'base.html' %}
+
+{% block title %}movie list{% endblock %}
+
+{% block content %}
+<h1>Movie Recommendations</h1>
+<ul>
+    <li>(2) Whiplash</li>
+    <li>(1) Good Will Hunting</li>
+    <li>(2) Oppenheimer</li>
+    <li>(2) Interstellar</li>
+    <li>(1) Leon The Professional</li>
+    <li>(2) The Social Network</li>
+</ul>
+<small>(number of times I watched the movie)</small>
+
+<h1>To Watch</h1>
+<ul>
+    <li>Night Crawler</li>
+    <li>Taxi Driver</li>
+</ul>
+<small>Date of publication indicates last update.</small>
+{% endblock %}

@@ -6,7 +6,7 @@ body, html {
 :root {
     --main-font: "Times New Roman", serif;
     --site-color: #4E598C;
-    --content-bg-color: #F0F4EF;
+    --content-bg-color: #FFFFFF;
     --text-color: #000000;
     --text-color-light: #50544F;
     --nav-bg-color: #e6eae5;
@@ -27,6 +27,7 @@ a {
 
 section.content {
     width: 700px;
+    height: 100%;
     background-color: var(--content-bg-color);
     margin: 20px;
     overflow-x: scroll;
