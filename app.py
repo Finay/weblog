@@ -10,6 +10,7 @@ DEBUG = True
 FLATPAGES_ROOT = 'templates/pages'
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = ['.md', '.html']
+FREEZER_BASE_URL = "https://finay.github.io/"
 
 app = Flask(__name__)
 app.config.from_object(__name__)
