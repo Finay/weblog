@@ -1,13 +1,13 @@
 <nav id="main-navigation">
-    <a href="/blog">
+    <a href="{{ url_for('blogHome') }}">
         <div id="blog-title">
             <h1>kian's weblog</h1>
         </div>
     </a>
     <div id="navbar">
         <ul>
-            <li><a href="#">Tags</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="{{ url_for('blogTags') }}">Tags</a></li>
+            <li><a href="{{ url_for('blogAbout') }}">About</a></li>
         </ul>
     </div>
 </nav>
