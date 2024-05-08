@@ -28,34 +28,28 @@ def blogHome():
     return render_template_string(pages.get('index').body, pages=timestamped)
 
 
-@app.route('/blog/about')
+@app.route('/blog/about/')
 def blogAbout():
     return render_template_string(pages.get('about').body)
 
 
-@app.route('/blog/tags/list')
+@app.route('/blog/tags/')
 def blogTags():
     return render_template_string(pages.get('tags').body, tags=tags)
 
 
-@app.route('/blog/tags/<string:tag>')
+@app.route('/blog/tags/<string:tag>/')
 def blogTag(tag):
     pages_with_tag = [page for page in list(pages) if 'tag' in page.meta.keys() and page['tag'] == tag]
     return render_template_string(pages.get('tags').body, pages=pages_with_tag, tag=tag)
 
 
-@app.route('/blog/<string:page>')
+@app.route('/blog/<string:page>/')
 def blogPost(page):
     page = page.replace(".", "")
     if f'posts/{page}' not in [post.path for post in posts]:
         return render_template_string(pages.get('404').body)
     return render_template_string(pages.get(f'posts/{page}').body)
-
-
-@app.route('/wip/<string:page>')
-def workInProgress(page):
-    page = page.replace(".", "")
-    return render_template(pages.get(f'wip/{page}.html').body)
 
 
 if __name__ == '__main__':
