@@ -11,6 +11,7 @@ body, html {
     --text-color-light: #50544F;
     --nav-bg-color: #e6eae5;
     --nav-border-color: #111111;
+    --a-color: #3E59AC;
 }
 
 body {
@@ -20,25 +21,37 @@ body {
     font-family: var(--main-font);
 }
 
+a {
+    color: var(--a-color);
+}
+
 section.content {
-    width: 700px;
+    min-width: 700px;
     background-color: var(--content-bg-color);
     margin: 20px;
+    overflow-x: scroll;
 }
 
 nav#main-navigation {
     width: 100%;
 }
 
-div#blog-title {
+#blog-title div {
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
-div#blog-title h1 {
+a#blog-title {
+    text-decoration: none;
+}
+
+#blog-title h1 {
     font-size: 40px;
     font-weight: 400;
     line-height: 80%;
+    text-decoration: none;
+    color: var(--text-color)
 }
 
 div#navbar {
@@ -62,11 +75,34 @@ div#navbar a {
 }
 
 section.post {
-    padding: 5px 40px;
+    padding: 5px 40px 25px 40px;
+}
+
+section.post h1 {
+    font-size: 28px;
 }
 
 h1.fill-title {
     width: 100%;
     text-align: center;
     font-weight: 400;
+}
+
+a.tag-link, a.page-link {
+    text-decoration: none;
+    font-size: 22px;
+}
+
+ul.page-list, ul.tags-list {
+    padding-left: 10px;
+    list-style: none;
+}
+
+ul.page-list li, ul.tags-list li {
+    margin-bottom: 25px;
+}
+
+ul.page-list p {
+    font-size: 13px;
+    line-height: 0;
 }

@@ -3,7 +3,7 @@
 <!-- Head -->
 <head>
     <link rel="stylesheet" href="/static/style.css">
-    <title> home - kian's weblog</title>
+    <title> tags - kian's weblog</title>
 </head>
 
 <body>
@@ -26,20 +26,24 @@
     <section class="post">
         
 
-<h1>Recent</h1>
+
+
+
+<h1>testing</h1>
 <ul class="page-list">
-    
-    <li>
-        <a class="page-link" href="/blog/test">Test Post 1</a>
-        <p class="date">2024-05-08</p>
-    </li>
     
     <li>
         <a class="page-link" href="/blog/test2">Test Post 2</a>
         <p class="date">2024-05-07</p>
     </li>
     
+    <li>
+        <a class="page-link" href="/blog/test">Test Post 1</a>
+        <p class="date">2024-05-08</p>
+    </li>
+    
 </ul>
+
 
 
     </section>
