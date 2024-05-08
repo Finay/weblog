@@ -11,7 +11,6 @@ FLATPAGES_ROOT = 'templates/pages'
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = ['.md', '.html']
 FREEZER_BASE_URL = "https://finay.github.io/"
-FREEZER_DESTINATION = "docs"
 
 app = Flask(__name__)
 app.config.from_object(__name__)
