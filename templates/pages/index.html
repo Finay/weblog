@@ -1,59 +1,17 @@
+title: Home
+---
 {% extends 'base.html' %}
-
 {% block title %}home{% endblock %}
-
 {% block content %}
-<h1>This is the home page</h1>
-Hello there!
-
-{% filter markdown %}
-## Testing
-{% endfilter %}
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-Hi
-
-
-
+{% if pages %}
+<h1>Recent</h1>
+<ul class="page-list">
+    {% for page in pages %}
+    <li>
+        <a class="page-link" href="{{ url_for('blogPost', page=page.path.replace('posts/', '')) }}">{{ page.title }}</a>
+        <p class="date">{{ page.date }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
 {% endblock %}

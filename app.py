@@ -1,68 +1,64 @@
-import jinja2.exceptions
-from flask import Flask, render_template, abort
-import json
-from os import listdir
-from flaskext.markdown import Markdown
+import sys
+
+# Imports
+from flask import Flask, render_template_string, render_template
+from flask_flatpages import FlatPages
+from flask_frozen import Freezer
+
+# Configuration
+DEBUG = True
+FLATPAGES_ROOT = 'templates/pages'
+FLATPAGES_AUTO_RELOAD = DEBUG
+FLATPAGES_EXTENSION = ['.md', '.html']
 
 app = Flask(__name__)
-Markdown(app)
+app.config.from_object(__name__)
+pages = FlatPages(app)
+freezer = Freezer(app)
 
-
-def getPostInfo(file):
-    with open(f'templates/pages/posts/{file}') as fd:
-        lines = [i.strip() for i in fd.readlines()]
-        if '{#' in lines and '#}' in lines:
-            lines = lines[lines.index('{#')+1:lines.index('#}')]
-    return json.loads("".join(lines))
-
-
-def getPostFiles():
-    return listdir('templates/pages/posts')
-
-
-def getPostsInfo():
-    post_files = getPostFiles()
-    posts_info = [getPostInfo(file) for file in post_files]
-    return [*zip(post_files, posts_info)]
+posts = [page for page in list(pages) if page.path.startswith('posts/')]
+tags = set([post['tag'] for post in list(posts) if 'tag' in post.meta.keys()])
+timestamped = [post for post in list(posts) if 'date' in post.meta.keys()]
+timestamped.sort(key=lambda page: page['date'], reverse=True)
 
 
 @app.route('/blog/')
 def blogHome():
-    return render_template('pages/index.html')
+    return render_template_string(pages.get('index').body, pages=timestamped)
 
 
 @app.route('/blog/about')
 def blogAbout():
-    return render_template('pages/about.html')
+    return render_template_string(pages.get('about').body)
 
 
-@app.route('/blog/tags')
+@app.route('/blog/tags/list')
 def blogTags():
-    return render_template('pages/tags.html')
+    return render_template_string(pages.get('tags').body, tags=tags)
 
 
-@app.route('/blog/<path>')
-def blogPost(path):
-    path = path.replace(".", "")
-    try:
-        return render_template(f'pages/posts/{path}.html')
-    except jinja2.exceptions.TemplateNotFound:
-        abort(404)
+@app.route('/blog/tags/<string:tag>')
+def blogTag(tag):
+    pages_with_tag = [page for page in list(pages) if 'tag' in page.meta.keys() and page['tag'] == tag]
+    return render_template_string(pages.get('tags').body, pages=pages_with_tag, tag=tag)
 
 
-@app.route('/wip/<path>')
-def workInProgress(path):
-    path = path.replace(".", "")
-    try:
-        return render_template(f'wip/{path}.html')
-    except jinja2.exceptions.TemplateNotFound:
-        abort(404)
+@app.route('/blog/<string:page>')
+def blogPost(page):
+    page = page.replace(".", "")
+    if f'posts/{page}' not in [post.path for post in posts]:
+        return render_template_string(pages.get('404').body)
+    return render_template_string(pages.get(f'posts/{page}').body)
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('pages/404.html'), 404
+@app.route('/wip/<string:page>')
+def workInProgress(page):
+    page = page.replace(".", "")
+    return render_template(pages.get(f'wip/{page}.html').body)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    if len(sys.argv) > 1 and sys.argv[1] == "build":
+        freezer.freeze()
+    else:
+        app.run(debug=True)

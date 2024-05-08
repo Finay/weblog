@@ -2,18 +2,20 @@
 
 <!-- Head -->
 <head>
-  {% include 'head.html' %}
-  <title>{% block title %}{% endblock %} - kian's weblog</title>
+    {% include 'head.html' %}
+    <title> {% block title %}{% endblock %} - kian's weblog</title>
 </head>
 
+<body>
 <section class="content">
-  <!-- Navigation -->
-  {% include 'navbar.html' %}
+    <!-- Navigation -->
+    {% include 'navbar.html' %}
 
-  <section class="post">
-    {% block content %}{% endblock %}
-  </section>
+    <section class="post">
+        {% block content %}{% endblock %}
+    </section>
 
-  <!-- Footer -->
-  {% include 'footer.html' %}
+    <!-- Footer -->
+    {% include 'footer.html' %}
 </section>
+</body>

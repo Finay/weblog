@@ -1,7 +1,32 @@
+title: tags
+---
 {% extends 'base.html' %}
 
 {% block title %}tags{% endblock %}
 
 {% block content %}
-<h1>This is the tags page</h1>
+
+{% if tags %}
+<h1>Tags</h1>
+<ul class="tags-list">
+    {% for tag in tags %}
+    <li>
+        <a class="tag-link" href="{{ url_for('blogTag', tag=tag) }}">{{ tag }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if pages %}
+<h1>{{ tag }}</h1>
+<ul class="page-list">
+    {% for page in pages %}
+    <li>
+        <a class="page-link" href="{{ url_for('blogPost', page=page.path.replace('posts/', '')) }}">{{ page.title }}</a>
+        <p class="date">{{ page.date }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 {% endblock %}
