@@ -10,7 +10,7 @@ DEBUG = True
 FLATPAGES_ROOT = 'templates/pages'
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = ['.md', '.html']
-FREEZER_BASE_URL = "https://finay.github.io/"
+FREEZER_BASE_URL = "https://finay.github.io/weblog/"
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -23,28 +23,28 @@ timestamped = [post for post in list(posts) if 'date' in post.meta.keys()]
 timestamped.sort(key=lambda page: page['date'], reverse=True)
 
 
-@app.route('/blog/')
+@app.route('/')
 def blogHome():
     return render_template_string(pages.get('index').body, pages=timestamped)
 
 
-@app.route('/blog/about/')
+@app.route('/about/')
 def blogAbout():
     return render_template_string(pages.get('about').body)
 
 
-@app.route('/blog/tags/')
+@app.route('/tags/')
 def blogTags():
     return render_template_string(pages.get('tags').body, tags=tags)
 
 
-@app.route('/blog/tags/<string:tag>/')
+@app.route('/tags/<string:tag>/')
 def blogTag(tag):
     pages_with_tag = [page for page in list(pages) if 'tag' in page.meta.keys() and page['tag'] == tag]
     return render_template_string(pages.get('tags').body, pages=pages_with_tag, tag=tag)
 
 
-@app.route('/blog/<string:page>/')
+@app.route('/<string:page>/')
 def blogPost(page):
     page = page.replace(".", "")
     if f'posts/{page}' not in [post.path for post in posts]:
