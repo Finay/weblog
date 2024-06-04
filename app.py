@@ -33,6 +33,21 @@ def blogAbout():
     return render_template_string(pages.get('about').body)
 
 
+@app.route('/messages/')
+def blogMessages():
+    return render_template_string(pages.get('messages').body)
+
+
+@app.route('/yearbook/')
+def blogYearbook():
+    return render_template_string(pages.get('yearbook').body)
+
+
+@app.route('/status/')
+def blogStatus():
+    return render_template_string(pages.get('status').body)
+
+
 @app.route('/tags/')
 def blogTags():
     return render_template_string(pages.get('tags').body, tags=tags)
