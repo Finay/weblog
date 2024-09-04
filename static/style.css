@@ -107,3 +107,8 @@ ul.page-list p {
     font-size: 13px;
     line-height: 0;
 }
+
+ul.page-list .page-data {
+    display: flex;
+    justify-content: space-between;
+}

@@ -23,7 +23,10 @@ title: tags
     {% for page in pages %}
     <li>
         <a class="page-link" href="{{ url_for('blogPost', page=page.path.replace('posts/', '')) }}">{{ page.title }}</a>
-        <p class="date">{{ page.date }}</p>
+        <div class="page-data">
+            <p class="tags">{{page.tag}}</p>
+            <p class="date">{{ page.date }}</p>
+        </div>
     </li>
     {% endfor %}
 </ul>
