@@ -83,6 +83,10 @@ section.post h1 {
     font-size: 28px;
 }
 
+section.post img {
+    width: 100%;
+}
+
 h1.fill-title {
     width: 100%;
     text-align: center;

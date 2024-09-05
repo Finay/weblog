@@ -1,0 +1,30 @@
+title: I have great friends
+tag: journal
+date: 2024-09-05
+---
+{% extends 'base.html' %}
+
+{% block title %}I have great friends{% endblock %}
+
+{% block content %}
+<h1>I have great friends</h1>
+<p>
+    I don't always remember that, and it's one of those things the statement itself can't remind me of sometimes no
+    matter how hard I wish it didn't work this way. At least I always eventually remember. Right now I do, so I hope
+    writing will make it last a little longer.
+    <br/><br/>
+    On another note, I've never been much of a photo taker. I always cite my phone having a bad camera when asked why
+    I'm not taking photos at fairly significant occasions. As true as it is that my phone camera sucks, that habit has
+    resulted is quite few pieces of evidence to remember events in my life by. So, to get into the habit of getting more
+    photos, and to add some flare to this blog, I'll try to also include a photo or two a day.
+    <br/><br/>
+    Here are todays:
+    <img src="{{ url_for('static', filename='images/first_photo.webp') }}"/>
+    Quite random but this is the first thing that came to mind when I wanted to take a photo. It's the bag for a loaf of
+    bread I bought (I like bread) with my calendar in the background.
+    <br/><br/>
+    <img src="{{ url_for('static', filename='images/alain+me_yokai.webp') }}"/>
+    I met a friend who lives nearby the night before he leaves for college in the states and finally got a photo at the
+    neighborhood park.
+</p>
+{% endblock %}
