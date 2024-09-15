@@ -43,9 +43,9 @@ def blogYearbook():
     return render_template_string(pages.get('yearbook').body)
 
 
-@app.route('/status/')
-def blogStatus():
-    return render_template_string(pages.get('status').body)
+@app.route('/logs/')
+def blogLogs():
+    return render_template_string(pages.get('logs').body)
 
 
 @app.route('/tags/')
