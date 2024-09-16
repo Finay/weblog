@@ -1,0 +1,20 @@
+title: Here I go I guess
+tag: journal
+date: 2024-09-16
+---
+{% extends 'base.html' %}
+
+{% block title %}Here I go I guess{% endblock %}
+
+{% block content %}
+<h1>Here I go I guess</h1>
+<p>
+    I leave tomorrow. At 6am. I won't be back till the evening on the 26th. On my own for the two days through
+    the Shimanami Kaido, it'll be interesting to see what it's like staying in a hostel. Beyond that, I'll be with my
+    grandparents in Ehime. No internet though. Hopefully that does me some good. I'll keep writing but stuff might not
+    get posted daily. That's all for now. Thanks.
+    <br/><br/>
+    <img src="{{ url_for('static', filename='images/backpacked.jpeg') }}"/>
+    My mostly packed bag for the 9-day trip.
+</p>
+{% endblock %}
